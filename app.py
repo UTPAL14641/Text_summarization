@@ -2,8 +2,8 @@ import streamlit as st
 from transformers import pipeline, set_seed
 from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-model_name = r"C:\Users\Win10\Desktop\text_summ_streamlit\pegasus-samsum-model"
-tokenizer = AutoTokenizer.from_pretrained(r"C:\Users\Win10\Desktop\text_summ_streamlit\tokenizer")
+model_name = "https://github.com/UTPAL14641/Text_summarization/tree/main/pegasus-samsum-model"
+tokenizer = AutoTokenizer.from_pretrained("https://github.com/UTPAL14641/Text_summarization/tree/main/tokenizer")
 gen_kwargs = {"length_penalty": 0.8, "num_beams":8, "max_length": 128}
 def generate_summary(text):
     pipe = pipeline("summarization", model="pegasus-samsum-model",tokenizer=tokenizer)
@@ -11,7 +11,7 @@ def generate_summary(text):
     return summary
 
 def main():
-    st.title("Text Summarization with PEGASUS-CNN_Dailymail")
+    st.title("Chat-text Summarizer")
     st.write("Enter the text to be summarized:")
     text = st.text_area("Input Text", height=200)
     if st.button("Summarize"):
@@ -24,3 +24,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
